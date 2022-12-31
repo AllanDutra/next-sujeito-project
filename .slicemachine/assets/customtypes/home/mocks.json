@@ -1,0 +1,103 @@
+{
+  "uid": {
+    "__TYPE__": "UIDContent",
+    "value": "necessary"
+  },
+  "title": {
+    "__TYPE__": "FieldContent",
+    "value": "lucky",
+    "type": "Text"
+  },
+  "sub_title": {
+    "__TYPE__": "StructuredTextContent",
+    "value": [
+      {
+        "type": "paragraph",
+        "content": {
+          "text": "Minim reprehenderit velit dolor minim qui ad labore dolor velit ex fugiat proident laborum esse. Lorem sunt mollit consectetur magna mollit anim consectetur ut."
+        }
+      }
+    ]
+  },
+  "link_action": {
+    "__TYPE__": "LinkContent",
+    "value": {
+      "__TYPE__": "ExternalLink",
+      "url": "https://prismic.io"
+    }
+  },
+  "mobile": {
+    "__TYPE__": "FieldContent",
+    "value": "growth",
+    "type": "Text"
+  },
+  "mobile_contenr": {
+    "__TYPE__": "StructuredTextContent",
+    "value": [
+      {
+        "type": "paragraph",
+        "content": {
+          "text": "Veniam ea laborum eu duis voluptate dolore anim deserunt qui ipsum pariatur ut. Voluptate eiusmod in laboris aliqua amet eu ipsum consectetur qui aliqua ex et labore ad esse."
+        }
+      }
+    ]
+  },
+  "mobile_banner": {
+    "__TYPE__": "ImageContent",
+    "origin": {
+      "id": "main",
+      "url": "https://images.unsplash.com/photo-1547082299-de196ea013d6",
+      "width": 4272,
+      "height": 2848
+    },
+    "url": "https://images.unsplash.com/photo-1547082299-de196ea013d6",
+    "width": 4272,
+    "height": 2848,
+    "edit": {
+      "zoom": 1,
+      "crop": {
+        "x": 0,
+        "y": 0
+      },
+      "background": "transparent"
+    },
+    "thumbnails": {}
+  },
+  "title_web": {
+    "__TYPE__": "FieldContent",
+    "value": "hello",
+    "type": "Text"
+  },
+  "web_content": {
+    "__TYPE__": "StructuredTextContent",
+    "value": [
+      {
+        "type": "paragraph",
+        "content": {
+          "text": "Aliquip id ullamco qui in."
+        }
+      }
+    ]
+  },
+  "web_banner": {
+    "__TYPE__": "ImageContent",
+    "origin": {
+      "id": "main",
+      "url": "https://images.unsplash.com/photo-1587614295999-6c1c13675117",
+      "width": 3810,
+      "height": 5715
+    },
+    "url": "https://images.unsplash.com/photo-1587614295999-6c1c13675117",
+    "width": 3810,
+    "height": 5715,
+    "edit": {
+      "zoom": 1,
+      "crop": {
+        "x": 0,
+        "y": 0
+      },
+      "background": "transparent"
+    },
+    "thumbnails": {}
+  }
+}
