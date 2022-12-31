@@ -1,9 +1,7 @@
-import Prismic from "@prismicio/client";
+import { createClient } from "@prismicio/client";
 
-export function getPrismicClient(req?: unknown) {
-  const prismic = Prismic.client("https://sujeito-next.cdn.prismic.io/api/v2", {
-    req,
-  });
+export function getPrismicClient() {
+  const prismic = createClient("https://sujeito-next.cdn.prismic.io/api/v2");
 
   return prismic;
 }

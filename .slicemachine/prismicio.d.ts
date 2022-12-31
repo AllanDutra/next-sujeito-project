@@ -11,14 +11,14 @@ interface HomeDocumentData {
     /**
      * title field in *Home*
      *
-     * - **Field Type**: Text
+     * - **Field Type**: Title
      * - **Placeholder**: *None*
      * - **API ID Path**: home.title
      * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
      *
      */
-    title: prismicT.KeyTextField;
+    title: prismicT.TitleField;
     /**
      * sub title field in *Home*
      *
@@ -44,14 +44,14 @@ interface HomeDocumentData {
     /**
      * mobile field in *Home*
      *
-     * - **Field Type**: Text
+     * - **Field Type**: Title
      * - **Placeholder**: *None*
      * - **API ID Path**: home.mobile
      * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
      *
      */
-    mobile: prismicT.KeyTextField;
+    mobile: prismicT.TitleField;
     /**
      * mobile content field in *Home*
      *
@@ -75,17 +75,6 @@ interface HomeDocumentData {
      */
     mobile_banner: prismicT.ImageField<never>;
     /**
-     * title web field in *Home*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: home.title_web
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-     *
-     */
-    title_web: prismicT.KeyTextField;
-    /**
      * web content field in *Home*
      *
      * - **Field Type**: Rich Text
@@ -107,6 +96,17 @@ interface HomeDocumentData {
      *
      */
     web_banner: prismicT.ImageField<never>;
+    /**
+     * title web field in *Home*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: *None*
+     * - **API ID Path**: home.title_web
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title_web: prismicT.TitleField;
 }
 /**
  * Home document from Prismic

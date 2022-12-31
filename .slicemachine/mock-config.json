@@ -6,6 +6,24 @@
           "patternType": "PARAGRAPH",
           "blocks": 1
         }
+      },
+      "title": {
+        "config": {
+          "patternType": "HEADING",
+          "blocks": 1
+        }
+      },
+      "mobile": {
+        "config": {
+          "patternType": "HEADING",
+          "blocks": 1
+        }
+      },
+      "title_web": {
+        "config": {
+          "patternType": "HEADING",
+          "blocks": 1
+        }
       }
     }
   }
