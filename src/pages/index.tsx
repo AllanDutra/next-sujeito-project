@@ -36,13 +36,9 @@ export default function Home({ content }: ContentProps) {
       <main className={styles.container}>
         <div className={styles.containerHeader}>
           <section className={styles.ctaText}>
-            <h1>Levando você ao próximo nível!</h1>
-            <span>
-              Uma plataforma com cursos que vão do zero até o profissional na
-              pratica, direto ao ponto aplicando o que usamos no mercado de
-              trabalho. 👊
-            </span>
-            <a>
+            <h1>{content.title}</h1>
+            <span>{content.titleContent}</span>
+            <a href={content.linkAction}>
               <button>COMEÇAR AGORA!</button>
             </a>
           </section>
@@ -57,16 +53,12 @@ export default function Home({ content }: ContentProps) {
 
         <div className={styles.sectionContent}>
           <section>
-            <h2>Aprenda criar aplicativos para Android e iOS</h2>
-            <span>
-              Você vai descobrir o jeito mais moderno de desenvolver apps
-              nativos para iOS e Android, construindo aplicativos do zero até
-              aplicativos.
-            </span>
+            <h2>{content.mobileTitle}</h2>
+            <span>{content.mobileContent}</span>
           </section>
 
           <img
-            src="/images/financasApp.png"
+            src={content.mobile_banner}
             alt="Conteúdos desenvolvimento de apps"
           />
         </div>
@@ -75,16 +67,13 @@ export default function Home({ content }: ContentProps) {
 
         <div className={styles.sectionContent}>
           <img
-            src="/images/webDev.png"
+            src={content.webBanner}
             alt="Conteúdos desenvolvimento de aplicações web"
           />
 
           <section>
-            <h2>Aprenda criar sistemas web</h2>
-            <span>
-              Criar sistemas web, sites usando as tecnologias mais modernas e
-              requisitadas pelo mercado.
-            </span>
+            <h2>{content.webTitle}</h2>
+            <span>{content.webContent}</span>
           </section>
         </div>
 
@@ -97,7 +86,7 @@ export default function Home({ content }: ContentProps) {
           <span>
             E você vai perder a chance de evoluir de uma vez por todas?
           </span>
-          <a>
+          <a href={content.linkAction}>
             <button>ACESSAR TURMA!</button>
           </a>
         </div>
@@ -123,16 +112,14 @@ export const getStaticProps: GetStaticProps = async () => {
     web_banner,
   } = response.results[0].data;
 
-  console.log(response.results[0].data);
-
   const content = {
-    title: title,
+    title: RichText.asText(title),
     titleContent: RichText.asText(sub_title),
     linkAction: link_action.url,
-    mobileTitle: mobile,
+    mobileTitle: RichText.asText(mobile),
     mobileContent: RichText.asText(mobile_content),
     mobile_banner: mobile_banner.url,
-    webTitle: title_web,
+    webTitle: RichText.asText(title_web),
     webContent: RichText.asText(web_content),
     webBanner: web_banner.url,
   };
