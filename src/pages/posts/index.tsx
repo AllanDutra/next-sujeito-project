@@ -16,6 +16,7 @@ import { GetStaticProps } from "next";
 import { getPrismicClient } from "../../services/prismic";
 import { predicate } from "@prismicio/client";
 import { RichText } from "prismic-dom";
+import { useState } from "react";
 
 type Post = {
   slug: string;
@@ -29,7 +30,9 @@ interface PostsProps {
   posts: Post[];
 }
 
-export default function Posts({ posts }: PostsProps) {
+export default function Posts({ posts: postsBlog }: PostsProps) {
+  const [posts, setPosts] = useState(postsBlog || []);
+
   return (
     <>
       <Head>
@@ -37,23 +40,22 @@ export default function Posts({ posts }: PostsProps) {
       </Head>
       <main className={styles.container}>
         <div className={styles.posts}>
-          <Link href="/">
-            <Image
-              src={thumbImg}
-              alt="Post título 1"
-              width={720}
-              height={410}
-              quality={100}
-            />
-            <strong>Criando meu primeiro aplicativo</strong>
-            <time>14 JULHO 2021</time>
-            <p>
-              Hoje vamos criar o controle de mostrar a senha no input, uma opção
-              para os nossos formulários de cadastro e login. Mas chega de
-              conversa e bora pro código junto comigo que o vídeo está show de
-              bola!
-            </p>
-          </Link>
+          {posts.map((post) => (
+            <Link key={post.slug} href={`/posts/${post.slug}`}>
+              <Image
+                src={post.cover}
+                alt={post.title}
+                width={720}
+                height={410}
+                quality={100}
+                placeholder="blur"
+                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mPUrQcAAN8ArguAKQcAAAAASUVORK5CYII="
+              />
+              <strong>{post.title}</strong>
+              <time>{post.updatedAt}</time>
+              <p>{post.description}</p>
+            </Link>
+          ))}
 
           <div className={styles.buttonNavigate}>
             <div>
