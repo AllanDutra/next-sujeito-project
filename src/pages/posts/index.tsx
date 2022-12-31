@@ -66,8 +66,9 @@ export default function Posts({
         slug: post.uid,
         title: RichText.asText(post.data.title),
         description:
-          post.data.description.find((content) => content.type === "paragraph")
-            ?.text ?? "",
+          (post.data.description as { type: string; text: string }[]).find(
+            (content) => content.type === "paragraph"
+          )?.text ?? "",
         cover: post.data.cover.url,
         updatedAt: new Date(post.last_publication_date).toLocaleDateString(
           "pt-BR",
@@ -154,8 +155,9 @@ export const getStaticProps: GetStaticProps = async () => {
       slug: post.uid,
       title: RichText.asText(post.data.title),
       description:
-        post.data.description.find((content) => content.type === "paragraph")
-          ?.text ?? "",
+        (post.data.description as { type: string; text: string }[]).find(
+          (content) => content.type === "paragraph"
+        )?.text ?? "",
       cover: post.data.cover.url,
       updatedAt: new Date(post.last_publication_date).toLocaleDateString(
         "pt-BR",
