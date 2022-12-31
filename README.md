@@ -34,7 +34,7 @@ This project was developed during the course ["NextJS from zero to advanced in p
 <div>
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original-wordmark.svg" height="80" />
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg" height="80" />
-<img src="https://assets.stickpng.com/thumbs/62f900eda8320dd346143be5.png" width="80" />
+<img src="https://seeklogo.com/images/P/prismic-logo-F6A173E6D0-seeklogo.com.png" width="80" />
 </div>
 
 <hr>
