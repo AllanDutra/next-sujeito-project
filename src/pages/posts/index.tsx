@@ -28,10 +28,61 @@ type Post = {
 
 interface PostsProps {
   posts: Post[];
+  page: number;
+  totalPage: number;
 }
 
-export default function Posts({ posts: postsBlog }: PostsProps) {
+export default function Posts({
+  posts: postsBlog,
+  page,
+  totalPage,
+}: PostsProps) {
+  const [currentPage, setCurrentPage] = useState(page);
   const [posts, setPosts] = useState(postsBlog || []);
+
+  async function reqPost(pageNumber: number) {
+    const prismic = getPrismicClient();
+
+    const response = await prismic.query(
+      [predicate.at("document.type", "post")],
+      {
+        orderings: "document.last_publication_date desc", // Ordenar pelo mais recente
+        fetch: ["post.title", "post.description", "post.cover"],
+        pageSize: 3,
+        page: pageNumber,
+      }
+    );
+
+    return response;
+  }
+
+  async function navigatePage(pageNumber: number) {
+    const response = await reqPost(pageNumber);
+
+    if (response.results.length === 0) return;
+
+    const getPosts = response.results.map((post) => {
+      return {
+        slug: post.uid,
+        title: RichText.asText(post.data.title),
+        description:
+          post.data.description.find((content) => content.type === "paragraph")
+            ?.text ?? "",
+        cover: post.data.cover.url,
+        updatedAt: new Date(post.last_publication_date).toLocaleDateString(
+          "pt-BR",
+          {
+            day: "2-digit",
+            month: "long",
+            year: "numeric",
+          }
+        ),
+      };
+    });
+
+    setCurrentPage(pageNumber);
+    setPosts(getPosts as Post[]);
+  }
 
   return (
     <>
@@ -58,23 +109,27 @@ export default function Posts({ posts: postsBlog }: PostsProps) {
           ))}
 
           <div className={styles.buttonNavigate}>
-            <div>
-              <button>
-                <FiChevronsLeft size={25} color="#FFF" />
-              </button>
-              <button>
-                <FiChevronLeft size={25} color="#FFF" />
-              </button>
-            </div>
+            {currentPage >= 2 && (
+              <div>
+                <button onClick={() => navigatePage(1)}>
+                  <FiChevronsLeft size={25} color="#FFF" />
+                </button>
+                <button onClick={() => navigatePage(currentPage - 1)}>
+                  <FiChevronLeft size={25} color="#FFF" />
+                </button>
+              </div>
+            )}
 
-            <div>
-              <button>
-                <FiChevronsRight size={25} color="#FFF" />
-              </button>
-              <button>
-                <FiChevronRight size={25} color="#FFF" />
-              </button>
-            </div>
+            {currentPage < totalPage && (
+              <div>
+                <button onClick={() => navigatePage(currentPage + 1)}>
+                  <FiChevronsRight size={25} color="#FFF" />
+                </button>
+                <button onClick={() => navigatePage(totalPage)}>
+                  <FiChevronRight size={25} color="#FFF" />
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </main>
@@ -116,6 +171,8 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       posts,
+      page: response.page,
+      totalPage: response.total_pages,
     },
     revalidate: 60 * 30, // Atualiza a cada 30 minutos.
   };
